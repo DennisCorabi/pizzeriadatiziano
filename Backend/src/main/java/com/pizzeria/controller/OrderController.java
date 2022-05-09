@@ -55,7 +55,7 @@ public class OrderController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<?> updateAddress(@RequestParam(value = "address") String address, @PathVariable("id") UUID id){
         Order updatedOrder = database.updateAddress(address,id);
         if (updatedOrder == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -66,7 +66,7 @@ public class OrderController {
         }
     }
 
-    @PutMapping("update/{id}")
+    @PutMapping("/{id}")
     public EntityModel<Order> updateStatus(@PathVariable("id") UUID id){
         Order order = database.updateStatus(id);
         return builder.build(order);

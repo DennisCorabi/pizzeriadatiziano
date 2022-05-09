@@ -17,7 +17,6 @@ public class Order {
     private String number;
     private final Long price;
     private final Pizze order;
-
     private Status status;
 
     public Order(String address, String name, String surname, String number, Long price, Pizze order) {

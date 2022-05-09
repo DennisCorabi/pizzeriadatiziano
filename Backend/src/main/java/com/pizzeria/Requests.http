@@ -3,7 +3,7 @@ Content-type: application/json
 
 {
   "name": "Dennis",
-  "surname": "TEnto",
+  "surname": "TUnto",
   "address": "Via risorgimento",
   "number": "3298627672",
   "price": 50
@@ -16,4 +16,4 @@ GET localhost:8080/api/v1/pizzeria
 PUT localhost:8080/api/v1/pizzeria/d9689376-9189-4bfb-b123-462051033987?address=tento
 
 ###UPDATE
-PUT localhost:8080/api/v1/pizzeria/update/76d50c42-9c53-453a-8ee9-c4e738e0ea23
+PUT localhost:8080/api/v1/pizzeria/update/2ed0553c-b3ab-44b9-8471-412269a8dbb9
