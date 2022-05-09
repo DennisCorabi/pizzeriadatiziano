@@ -1,0 +1,18 @@
+h2 {
+  margin-left: 30px;
+}
+
+app-tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: block;
+  margin: auto;
+}
+
+app-form {
+  display: flex;
+  justify-content: center;
+}
