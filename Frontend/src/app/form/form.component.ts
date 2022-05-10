@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Order } from "../Order";
 
 @Component({
   selector: 'app-form',
@@ -9,17 +9,25 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FormComponent implements OnInit {
 
+  order: Order = {
+    name: "",
+    surname:"",
+    number:"",
+    address:""
+  }
   ngOnInit(): void {
   }
 
+
   constructor(private http:HttpClient) {}
 
-  onSubmit(data: any) {
-    this.http.post('http://139.162.139.29:8080/api/v1/pizzeria', data)
+  onSubmit() {
+
+    console.log(this.order);
+    this.http.post('http://139.162.139.29:8080/api/v1/pizzeria', this.order)
     .subscribe((result) => {
       console.warn("result", result);
     })
-    console.warn(data);
   }
 
 }
