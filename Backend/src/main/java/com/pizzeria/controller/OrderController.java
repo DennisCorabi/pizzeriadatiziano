@@ -5,6 +5,8 @@ import com.pizzeria.dataAccess.OrderBuilder;
 import com.pizzeria.dataAccess.OrderDatabase;
 import com.pizzeria.model.Order.Order;
 import com.pizzeria.model.Exceptions.OrderNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -20,8 +22,10 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/api/v1/pizzeria")
+@CrossOrigin
 public class OrderController {
 
+    private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
     OrderDatabase database;
     OrderBuilder builder;
     public OrderController(OrderDatabase database, OrderBuilder builder){
@@ -51,7 +55,9 @@ public class OrderController {
         if (order == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         else {
             EntityModel<Order> entityModel = builder.build(order);
+            logger.info("New order. ID: "+order.getIdentifier());
             return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
+
         }
     }
 

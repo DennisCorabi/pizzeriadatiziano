@@ -12,7 +12,7 @@ export class FormComponent implements OnInit {
   order: Order = {
     name: "",
     surname:"",
-    number:"",
+    phone:"",
     address:""
   }
   ngOnInit(): void {
