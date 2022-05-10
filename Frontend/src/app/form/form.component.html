@@ -1,23 +1,23 @@
 
-<form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)" class="example-form">
+<form #userPost="ngForm" method="POST" (ngSubmit)="onSubmit(userPost.value)" class="example-form">
     <mat-form-field class="semi-width" appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" required ngModel ngValue="name">
+      <input matInput placeholder="Name" required ngModel="name">
     </mat-form-field>
   
     <mat-form-field class="semi-width" appearance="fill">
         <mat-label>Surname</mat-label>
-        <input matInput placeholder="Surname" required ngModel>
+        <input matInput placeholder="Surname" required  ngModel="surname">
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" required ngModel>
+        <input matInput placeholder="Address" required ngModel="address">
       </mat-form-field>
 
       <mat-form-field class="semi-width" appearance="fill">
         <mat-label>Phone</mat-label>
-        <input matInput placeholder="Phone" required ngModel>
+        <input matInput placeholder="Phone" required ngModel="number">
       </mat-form-field>
 
       <button class="btn" color="primary" mat-raised-button>Send Order</button>
