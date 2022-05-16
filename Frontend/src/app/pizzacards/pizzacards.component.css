@@ -3,7 +3,11 @@
   }
 
 
-.example-card {    
+.example-card {
     float: left;
     margin: 20px -10px 100px 50px;
+}
+
+.card-image{
+  max-height: 150px;
 }
