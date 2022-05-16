@@ -5,15 +5,18 @@ Content-type: application/json
   "name": "Dennis",
   "surname": "TUnto",
   "address": "Via risorgimento",
-  "number": "3298627672",
+  "phone": "3298627672",
   "price": 50
 }
 
 ### GET
 GET localhost:8080/api/v1/pizzeria
 
+### GET
+GET localhost:8080/api/v1/pizzeria/6281065f7695e642157f312b
+
 ###PUT
 PUT localhost:8080/api/v1/pizzeria/d9689376-9189-4bfb-b123-462051033987?address=tento
 
 ###UPDATE
-PUT localhost:8080/api/v1/pizzeria/update/2ed0553c-b3ab-44b9-8471-412269a8dbb9
+PUT localhost:8080/api/v1/pizzeria/6281065f7695e642157f312b

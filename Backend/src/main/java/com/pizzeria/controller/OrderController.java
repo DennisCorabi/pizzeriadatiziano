@@ -2,15 +2,16 @@ package com.pizzeria.controller;
 
 
 import com.pizzeria.dataAccess.OrderBuilder;
-import com.pizzeria.dataAccess.OrderDatabase;
-import com.pizzeria.model.Order.Order;
+import com.pizzeria.dataAccess.OrderRepository;
+import com.pizzeria.model.Exceptions.OrderCompletedException;
 import com.pizzeria.model.Exceptions.OrderNotFoundException;
+import com.pizzeria.model.Order.Order;
+import com.pizzeria.model.Status;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,60 +27,69 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 public class OrderController {
 
     private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
-    OrderDatabase database;
+
+    OrderRepository repository;
     OrderBuilder builder;
-    public OrderController(OrderDatabase database, OrderBuilder builder){
-        this.database=database;
+    public OrderController(OrderBuilder builder, OrderRepository repository){
         this.builder=builder;
+        this.repository=repository;
     }
 
     @GetMapping
     public CollectionModel<EntityModel<Order>> getOrders(){
-        List<EntityModel<Order>> entityModels = database.getRepository()
+        repository.findAll().forEach(System.out::println);
+        List<EntityModel<Order>> entityModels = repository.findAll()
                 .stream()
                 .map(builder::build).toList();
         return CollectionModel.of(entityModels, linkTo(methodOn(OrderController.class).getOrders()).withRel("Orders"));
     }
 
     @GetMapping("/{id}")
-    public EntityModel<Order> getOrderById(@PathVariable("id") UUID id){
-        Order order = database.getOrderById(id);
-        if(order==null) throw new OrderNotFoundException(id);
+    public EntityModel<Order> getOrderById(@PathVariable("id") String id){
+        Order order = repository.findById(id).orElseThrow(()->new OrderNotFoundException(id));
 
         return builder.build(order);
     }
 
     @PostMapping
     public ResponseEntity<?> newOrder(@RequestBody Order newOrder){
-        Order order = database.insertOrder(newOrder);
-        if (order == null) return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        else {
-            EntityModel<Order> entityModel = builder.build(order);
-            logger.info("New order. ID: "+order.getIdentifier());
-            return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
-
-        }
+        Order order = repository.save(newOrder);
+        EntityModel<Order> entityModel = builder.build(order);
+        logger.info("New order. ID: "+order.getIdentifier());
+        return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(entityModel);
     }
 
     @PutMapping("update/{id}")
-    public ResponseEntity<?> updateAddress(@RequestParam(value = "address") String address, @PathVariable("id") UUID id){
-        Order updatedOrder = database.updateAddress(address,id);
-        if (updatedOrder == null) return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        else{
-            String string = "Could not find order no. "+id;
-            EntityModel<Order> entityModel = builder.build(updatedOrder);
-            return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body(string);
-        }
+    public ResponseEntity<?> updateAddress(@RequestParam(value = "address") String address, @PathVariable("id") String id){
+        repository.findById(id).map(order -> {
+            order.setAddress(address);
+            EntityModel<Order> entityModel = builder.build(order);
+            return ResponseEntity.created(entityModel.getRequiredLink(IanaLinkRelations.SELF).toUri()).body("Order Updated.");
+                })
+            .orElseThrow(()->new OrderNotFoundException(id));
+
+        return null;
     }
 
     @PutMapping("/{id}")
-    public EntityModel<Order> updateStatus(@PathVariable("id") UUID id){
-        Order order = database.updateStatus(id);
-        return builder.build(order);
+    public EntityModel<Order> updateStatus(@PathVariable("id") String id){
+        repository.findById(id).map(order -> {
+          switch (order.getStatus()){
+              case COOKING-> order.setStatus(Status.DELIVERING);
+              case DELIVERING -> order.setStatus(Status.COMPLETED);
+              case COMPLETED -> throw new OrderCompletedException(id);
+          }
+          return builder.build(order);
+        });
+
+        return null;
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCompletedOrder(@PathVariable("id") UUID id){
-        database.deleteCompletedOrder(id);
+    public void deleteCompletedOrder(@PathVariable("id") String id){
+        repository.findById(id).map(order -> {
+            repository.delete(order);
+            return null;
+        });
     }
 }

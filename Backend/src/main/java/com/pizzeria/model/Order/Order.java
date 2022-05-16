@@ -2,22 +2,26 @@ package com.pizzeria.model.Order;
 
 import com.pizzeria.model.Pizze;
 import com.pizzeria.model.Status;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
 
+@Document("ordini")
 public class Order {
-    private final UUID identifier;
+
+    @Id
+    private String identifier;
     private String address;
 
     private final String name;
     private final String surname;
     private String phone;
     private final Long price;
-    private final Pizze order;
+    private final List<Pizze> order;
     private Status status;
-
-    public Order(String address, String name, String surname, String phone, Long price, Pizze order) {
-        this.identifier = UUID.randomUUID();
+    public Order(String address, String name, String surname, String phone, Long price, List<Pizze> order) {
         status = Status.COOKING;
         this.address = address;
         this.name = name;
@@ -27,9 +31,10 @@ public class Order {
         this.order = order;
     }
 
-    public UUID getIdentifier() {
+    public String getIdentifier() {
         return identifier;
     }
+
 
     public String getAddress() {
         return address;
@@ -48,6 +53,13 @@ public class Order {
         return surname;
     }
 
+    public Long getPrice() {
+        return price;
+    }
+
+    public List<Pizze> getOrder() {
+        return order;
+    }
 
     public String getPhone() {
         return phone;
