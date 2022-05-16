@@ -1,0 +1,17 @@
+.cart {
+    position: absolute;
+    right: 30px;
+}
+
+app-pizzacards {
+    height: 100%;
+}
+
+mat-sidenav {
+    width: 320px;
+}
+
+.title {
+    margin-left: 50px;
+    margin-top: 30px;
+}
