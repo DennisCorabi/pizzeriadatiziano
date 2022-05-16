@@ -1,7 +1,7 @@
 
     <mat-toolbar color="primary">
         <span>Pizzeria da Tiziano</span>
-        <mat-icon (click)="sidenav.toggle()" class="cart">add_shopping_cart</mat-icon>
+        <mat-icon (click)="sidenav.toggle()" class="cart">shopping_cart</mat-icon>
     </mat-toolbar>
       
     <mat-sidenav-container class="example-container">
@@ -9,7 +9,7 @@
       <mat-sidenav position="end" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')"
                  (closed)="events.push('close!')">
 
-                 <h2>Confirm your order</h2>
+                 <h2 class="sidenav-title">Confirm your order</h2>
         </mat-sidenav>
   
         <mat-sidenav-content>
