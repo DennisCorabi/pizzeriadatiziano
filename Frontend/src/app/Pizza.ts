@@ -25,5 +25,11 @@ export const pizze: Pizza[] = [
     price: 20,
     image: "https://wips.plug.it/cips/buonissimo.org/cms/2012/05/pizza-marinara-5.jpg",
     description: "Pomodoro, olio e basilico"
+  },
+  {
+    name:"Quattro stagioni",
+    price: 20,
+    image: "https://i0.wp.com/www.piccolericette.net/piccolericette/wp-content/uploads/2016/07/3017_Pizza.jpg?resize=895%2C616&ssl=1",
+    description: "Pomodoro, mozzarella, olive nere e prosciutto"
   }
 ]

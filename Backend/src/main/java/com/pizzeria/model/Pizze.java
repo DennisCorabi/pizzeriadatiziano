@@ -1,5 +1,5 @@
 package com.pizzeria.model;
 
 public enum Pizze {
-    DIAVOLA, MARGHERITA, MARINARA, NAPOLETANA, AMERICANA
+    DIAVOLA, MARGHERITA, MARINARA, NAPOLETANA, AMERICANA, QuattroStagioni
 }

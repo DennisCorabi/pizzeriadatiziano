@@ -1,24 +1,42 @@
 
     <mat-toolbar color="primary">
         <span>Pizzeria da Tiziano</span>
-        <mat-icon (click)="sidenav.toggle()" class="cart">shopping_cart</mat-icon>
+
+      <button class="cart" mat-button (click)=sidenav.toggle()>CART
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+
     </mat-toolbar>
 
     <mat-sidenav-container class="example-container">
 
       <mat-sidenav position="end" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
-        <h2 class="sidenav-text">Confirm your order</h2>
+        <h2 class="sidenav-text">Riepilogo del tuo ordine</h2>
         <ul>
-          <li *ngFor="let pizza of order">{{pizza.name}}: {{pizza.price}}</li>
+          <li *ngFor="let pizza of order">Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}</li>
         </ul>
-        <h4 *ngIf="cart.costo!=0" class="sidenav-text">costo complessivo: {{this.cart.costo}}</h4>
+        <h4 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h4>
+
+        <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="submit()">Invia ordine
+          <mat-icon>shopping_cart_checkout</mat-icon>
+        </button>
 
         </mat-sidenav>
 
-        <mat-sidenav-content>
-            <h2 class="title">Order Here</h2>
+        <mat-sidenav-content >
+          <h2 class="title">Menu</h2>
+          <app-pizzacards></app-pizzacards>
 
-            <app-pizzacards></app-pizzacards>
+          <mat-expansion-panel class="tracking">
+            <mat-expansion-panel-header>
+              <mat-panel-title>Rintraccia il tuo ordine</mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field>
+              <mat-label>Codice del tuo ordine: </mat-label>
+              <input matInput [(ngModel)]="tracking_order" autocomplete="off">
+            </mat-form-field>
+            <button mat-button>Rintraccia</button>
+          </mat-expansion-panel>
         </mat-sidenav-content>
 
     </mat-sidenav-container>

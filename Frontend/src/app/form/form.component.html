@@ -1,25 +1,23 @@
 
-<form method="POST" (ngSubmit)="onSubmit()" class="example-form">
+<form method="POST" class="example-form">
     <mat-form-field class="semi-width" appearance="fill">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" required [(ngModel)]="order.name" name="name">
+      <input matInput placeholder="Name" required [(ngModel)]="cart.order.name" name="name">
     </mat-form-field>
 
     <mat-form-field class="semi-width" appearance="fill">
         <mat-label>Surname</mat-label>
-        <input matInput placeholder="Surname" required [(ngModel)]="order.surname" name="surname">
+        <input matInput placeholder="Surname" required [(ngModel)]="cart.order.surname" name="surname">
       </mat-form-field>
 
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Address</mat-label>
-        <input matInput placeholder="Address" required [(ngModel)] = "order.address" name="address">
+        <input matInput placeholder="Address" required [(ngModel)] = "cart.order.address" name="address">
       </mat-form-field>
 
       <mat-form-field class="semi-width" appearance="fill">
         <mat-label>Phone</mat-label>
-        <input matInput placeholder="Phone" required [(ngModel)]="order.phone" name="phone">
+        <input matInput placeholder="Phone" required [(ngModel)]="cart.order.phone" name="phone">
       </mat-form-field>
-
-      <button class="btn" color="primary" mat-raised-button>Send Order</button>
   </form>
 

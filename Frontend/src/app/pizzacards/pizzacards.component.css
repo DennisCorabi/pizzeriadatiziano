@@ -1,13 +1,19 @@
-.example-card {
-    max-width: 270px;
-  }
 
 
 .example-card {
-    float: left;
-    margin: 20px -10px 100px 50px;
+  float: left;
+  margin: 20px -10px 100px 50px;
+  width: 270px;
 }
 
 .card-image{
   max-height: 150px;
+  width: 300px;
+}
+
+mat-icon{
+  padding-left: 10px;
+}
+.button-add{
+  border: 1px solid black;
 }

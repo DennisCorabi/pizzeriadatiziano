@@ -1,6 +1,11 @@
 .cart {
-    position: absolute;
-    right: 30px;
+  position: absolute;
+  right: 30px;
+  background-color: #034f84;
+}
+
+mat-icon{
+  padding-left: 10px;
 }
 
 app-pizzacards {
@@ -19,4 +24,15 @@ mat-sidenav {
 .sidenav-text {
     margin-left: 30px;
     margin-top: 30px;
+}
+
+#send_button{
+  background-color: #034f84;
+  margin-left: 50px;
+}
+
+.tracking{
+  position: fixed;
+  bottom: 0;
+  right: 0;
 }
