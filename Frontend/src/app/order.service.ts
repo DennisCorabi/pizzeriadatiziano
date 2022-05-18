@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import {Pizza, pizze} from "./Pizza";
-import { Order } from "./Order";
 import {HttpClient} from "@angular/common/http";
+import {pizze, Order, Pizza} from "./Templates";
 
 @Injectable({
   providedIn: 'root'

@@ -1,4 +1,4 @@
-export interface Pizza{
+export interface Pizza {
   name: string,
   price: number,
   image: string,
@@ -33,3 +33,12 @@ export const pizze: Pizza[] = [
     description: "Pomodoro, mozzarella, olive nere e prosciutto"
   }
 ]
+
+export interface Order{
+  name: string
+  surname: string
+  address: string
+  phone: string
+  pizze: Pizza[]
+  price: number
+}

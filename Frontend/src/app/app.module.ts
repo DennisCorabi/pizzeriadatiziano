@@ -23,17 +23,16 @@ import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { PizzacardsComponent } from './pizzacards/pizzacards.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { SidenavcartComponent } from './sidenavcart/sidenavcart.component';
-import { TrackingComponent } from './tracking/tracking.component';
+import { SidenavcartComponent} from './sidenavcart/sidenavcart.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { OrderDialogComponent } from './order-dialog/order-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     PizzacardsComponent,
-    SidenavcartComponent,
-    TrackingComponent,
+    SidenavcartComponent,    OrderDialogComponent
   ],
   imports: [
     BrowserModule,

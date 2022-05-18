@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TrackingComponent } from './tracking.component';
+import { OrderDialogComponent } from './order-dialog.component';
 
-describe('TrackingComponent', () => {
-  let component: TrackingComponent;
-  let fixture: ComponentFixture<TrackingComponent>;
+describe('OrderDialogComponent', () => {
+  let component: OrderDialogComponent;
+  let fixture: ComponentFixture<OrderDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TrackingComponent ]
+      declarations: [ OrderDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TrackingComponent);
+    fixture = TestBed.createComponent(OrderDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

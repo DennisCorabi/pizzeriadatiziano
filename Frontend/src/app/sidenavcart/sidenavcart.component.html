@@ -10,14 +10,14 @@
 
     <mat-sidenav-container class="example-container">
 
-      <mat-sidenav position="end" #sidenav mode="side" [(opened)]="opened" (opened)="events.push('open!')" (closed)="events.push('close!')">
+      <mat-sidenav position="end" #sidenav mode="side">
         <h2 class="sidenav-text">Riepilogo del tuo ordine</h2>
         <ul>
           <li *ngFor="let pizza of order">Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}</li>
         </ul>
         <h4 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h4>
 
-        <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="submit()">Invia ordine
+        <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="openDialog()">Invia ordine
           <mat-icon>shopping_cart_checkout</mat-icon>
         </button>
 
