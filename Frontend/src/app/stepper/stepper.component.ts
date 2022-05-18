@@ -22,6 +22,7 @@ export class StepperComponent implements OnInit {
   secondFormGroup: FormGroup;
   thirdFormGroup: FormGroup;
 
+  isLinear = true;
 
   constructor(private _formBuilder: FormBuilder, private http:HttpClient, public cart: OrderService) {}
 
