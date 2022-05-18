@@ -36,7 +36,7 @@ export class OrderService {
 
   submit(){
     console.log(this.order);
-    this.http.post('http://139.162.139.29:8080/api/v1/pizzeria', this.order)
+    this.http.post('http://85.234.131.162:8080/api/v1/pizzeria', this.order)
       .subscribe((result) => {
         console.warn("result", result);
       })
