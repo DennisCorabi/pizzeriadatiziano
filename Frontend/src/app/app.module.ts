@@ -26,13 +26,14 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidenavcartComponent} from './sidenavcart/sidenavcart.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { OrderDialogComponent } from './order-dialog/order-dialog.component';
+import { StepperComponent } from './stepper/stepper.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     PizzacardsComponent,
-    SidenavcartComponent,    OrderDialogComponent
+    SidenavcartComponent,    OrderDialogComponent, StepperComponent
   ],
   imports: [
     BrowserModule,
