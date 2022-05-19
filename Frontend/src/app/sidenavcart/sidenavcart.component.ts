@@ -24,7 +24,7 @@ export class SidenavcartComponent implements OnInit {
 
   track(){
     console.log();
-    this.http.get('http://139.162.139.29:8080/api/v1/pizzeria/'+this.tracking_order)
+    this.http.get('http://85.234.131.162:8080/api/v1/pizzeria/'+this.tracking_order)
       .subscribe((result) => {
         console.warn("result", result);
         console.log(result);
