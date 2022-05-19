@@ -1,54 +1,94 @@
-<mat-stepper orientation="vertical" [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup" errorMessage="Name is required.">
+<mat-stepper orientation="vertical" [linear]="isLinear">
+
+    <mat-step [stepControl]="firstFormGroup" errorMessage="Nome e cognome sono obbligatori">
       <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Fill out your name</ng-template>
+        <ng-template matStepLabel>Inserisci le tue informazioni</ng-template>
         <mat-form-field class="field" appearance="fill">
-          <mat-label>Name</mat-label>
+          <mat-label>Nome</mat-label>
           <input matInput placeholder="First name" formControlName="firstCtrl" required [(ngModel)]="cart.order.name" name="name">
         </mat-form-field>
         <mat-form-field class="field" appearance="fill">
-            <mat-label>Surname</mat-label>
+            <mat-label>Cognome</mat-label>
             <input matInput placeholder="Last name" formControlName="firstCtrl" required [(ngModel)]="cart.order.surname" name="surname">
           </mat-form-field>
         <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup" errorMessage="Address is required.">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fill out your address</ng-template>
-        <mat-form-field appearance="fill">
-          <mat-label>Address</mat-label>
-          <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="secondCtrl" required [(ngModel)] = "cart.order.address" name="address">
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button mat-button matStepperNext>Avanti</button>
         </div>
       </form>
     </mat-step>
 
-    <mat-step [stepControl]="thirdFormGroup" errorMessage="Address is required.">
+    <mat-step [stepControl]="secondFormGroup" errorMessage="L'indirizzo è obbligatorio">
+      <form [formGroup]="secondFormGroup">
+        <ng-template matStepLabel>Inserisci il tuo indirizzo</ng-template>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Seleziona la città</mat-label>
+          <mat-select formControlName="secondCtrl" required [(ngModel)]="cart.order.location.city">
+            <mat-option *ngFor="let city of cities" [value]="city">
+              {{city}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="large_field">
+          <mat-label>Indirizzo</mat-label>
+          <input matInput formControlName="secondCtrl" required [(ngModel)] = "cart.order.location.address" name="address">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="small_field">
+        <mat-label>Civico</mat-label>
+        <input matInput formControlName="secondCtrl" required [(ngModel)] = "cart.order.location.nOfAddress" name="nOfAddress">
+      </mat-form-field>
+
+        <div>
+          <button mat-button matStepperPrevious>Indietro</button>
+          <button mat-button matStepperNext>Avanti</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step [stepControl]="thirdFormGroup" errorMessage="Il numero di telefono è obbligatorio">
+
         <form [formGroup]="thirdFormGroup">
-          <ng-template matStepLabel>Fill out your phone</ng-template>
+          <ng-template matStepLabel>Inserisci il numero di telefono</ng-template>
+
           <mat-form-field appearance="fill">
-            <mat-label>Phone</mat-label>
-            <input matInput placeholder="Ex. 1 Main St, New York, NY" formControlName="thirdCtrl" required [(ngModel)] = "cart.order.phone" name="phone">
+            <mat-label>Prefisso</mat-label>
+            <mat-select formControlName="thirdCtrl"  [(ngModel)]="cart.order.phone.dial_code">
+              <mat-option *ngFor="let code of codes" [value]="code.dial_code">
+                {{code.name}} ({{code.dial_code}})
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Telefono</mat-label>
+            <input matInput placeholder="393298527672" formControlName="thirdCtrl" required [(ngModel)] = "cart.order.phone.number" name="phone">
           </mat-form-field>
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext (click)="cart.submit()">Next</button>
+            <button mat-button matStepperPrevious>Indietro</button>
+            <button mat-button matStepperNext class="submit-button">Avanti</button>
           </div>
         </form>
       </mat-step>
 
-    <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>Your order has been sent.</p>
+    <mat-step [stepControl]="fourthFormGroup">
+      <ng-template matStepLabel>Riepilogo</ng-template>
+      <div>Informazioni:</div>
+      <ol>
+        <li>Nome: {{cart.order.name}}</li>
+        <li>Cognome: {{cart.order.surname}}</li>
+        <li>Indirizzo: {{cart.getAddress()}}</li>
+        <li>Numero di telefono: {{cart.order.phone.dial_code}} {{cart.order.phone.number}}</li>
+      </ol>
+
+      <div>Ordine</div>
+      <ol>
+        <li *ngFor="let pizza of cart.get()">{{pizza.name}}: {{pizza.price | currency}}</li>
+      </ol>
       <div>
-        <button mat-button mat-dialog-close>Done</button>
+        <button mat-button matStepperNext (click)="submit()" class="submit-button">Ordina</button>
+        <button mat-button matStepperPrevious>Indietro</button>
       </div>
     </mat-step>
   </mat-stepper>
-  

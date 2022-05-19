@@ -1,11 +1,10 @@
 package com.pizzeria.model.Order;
 
-import com.pizzeria.model.Pizze;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.pizzeria.model.Status;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Document("ordini")
@@ -13,17 +12,18 @@ public class Order {
 
     @Id
     private String identifier;
-    private String address;
 
+    @JsonProperty("location")
+    private Location location;
     private final String name;
     private final String surname;
-    private String phone;
+    private Phone phone;
     private final Long price;
-    private final List<Pizze> order;
+    private final List<Pizza> order;
     private Status status;
-    public Order(String address, String name, String surname, String phone, Long price, List<Pizze> order) {
+    public Order(Location location, String name, String surname, Phone phone, Long price, List<Pizza> order) {
         status = Status.COOKING;
-        this.address = address;
+        this.location = location;
         this.name = name;
         this.surname = surname;
         this.phone = phone;
@@ -34,16 +34,6 @@ public class Order {
     public String getIdentifier() {
         return identifier;
     }
-
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getName() {
         return name;
     }
@@ -57,15 +47,23 @@ public class Order {
         return price;
     }
 
-    public List<Pizze> getOrder() {
-        return order;
-    }
-
-    public String getPhone() {
+    public Phone getPhone() {
         return phone;
     }
 
-    public void setPhone(String phone) {
+    public Location getLocation() {
+        return location;
+    }
+
+    public List<Pizza> getOrder() {
+        return order;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setPhone(Phone phone) {
         this.phone = phone;
     }
 
@@ -81,7 +79,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "identifier=" + identifier +
-                ", address='" + address + '\'' +
+                ", address='" + location + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", phone='" + phone + '\'' +

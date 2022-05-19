@@ -1,12 +1,30 @@
 .mat-stepper-horizontal {
     margin-top: 8px;
   }
-  
+
   .mat-form-field {
     margin-top: 16px;
   }
-  
+
 
   .field {
     margin-right: 30px;
+  }
+
+  .submit-button{
+    background-color: #034f84;
+    color: #FAFAFA;
+  }
+  .large_field{
+    width: 250px;
+    margin: 10px;
+  }
+
+  .small_field{
+    width: 100px;
+    margin: 10px;
+  }
+
+  .mat-form-field{
+    margin: 10px;
   }

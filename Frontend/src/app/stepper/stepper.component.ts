@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import { HttpClient } from '@angular/common/http';
 import {OrderService} from "../order.service";
+import {cities} from "../Templates"
+import codes from "../../assets/CountryCodes.json";
+import UScities from "../../assets/US_States_and_Cities.json";
+import {OrderDialogComponent} from "../order-dialog/order-dialog.component";
+import {SidenavcartComponent} from "../sidenavcart/sidenavcart.component";
 
 
 @Component({
@@ -18,15 +22,21 @@ import {OrderService} from "../order.service";
 })
 export class StepperComponent implements OnInit {
 
-  firstFormGroup: FormGroup;
-  secondFormGroup: FormGroup;
-  thirdFormGroup: FormGroup;
+  firstFormGroup: any;
+  secondFormGroup: any;
+  thirdFormGroup: any;
+  fourthFormGroup: any;
 
+
+  cities: String[] =  cities;
+  codes = codes;
   isLinear = true;
 
-  constructor(private _formBuilder: FormBuilder, private http:HttpClient, public cart: OrderService) {}
+  constructor(private _formBuilder: FormBuilder, public cart: OrderService, public dialog: OrderDialogComponent) {
+  }
 
   ngOnInit() {
+
     this.firstFormGroup = this._formBuilder.group({
       firstCtrl: ['', Validators.required],
     });
@@ -36,5 +46,14 @@ export class StepperComponent implements OnInit {
     this.thirdFormGroup = this._formBuilder.group({
       thirdCtrl: ['', Validators.required],
     });
+
+    this.fourthFormGroup = this._formBuilder.group({
+    })
   }
+
+  submit(){
+    this.cart.submit();
+    this.dialog.onNoClick();
+  }
+
 }

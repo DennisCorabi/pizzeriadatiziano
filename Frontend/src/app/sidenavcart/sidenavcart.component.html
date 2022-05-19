@@ -11,8 +11,8 @@
     <mat-sidenav-container class="example-container">
 
       <mat-sidenav position="end" #sidenav mode="side">
-        <h2 class="sidenav-text">Riepilogo del tuo ordine</h2>
-        <ul>
+        <h2 class="sidenav-text">Carrello</h2>
+        <ul *ngIf="cart.order.price!=0">
           <li *ngFor="let pizza of order">Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}</li>
         </ul>
         <h4 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h4>
@@ -31,16 +31,14 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Rintraccia il tuo ordine</mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-form-field>
-              <mat-label>Codice del tuo ordine: </mat-label>
-              <input matInput [(ngModel)]="tracking_order" autocomplete="off">
+            <mat-form-field class="tracking_field">
+              <mat-label>Codice</mat-label>
+              <input matInput [(ngModel)]="tracking_order" autocomplete="off" required>
             </mat-form-field>
-            <button mat-button>Rintraccia</button>
+            <button mat-button (click)="this.cart.track(tracking_order)">Rintraccia</button>
           </mat-expansion-panel>
         </mat-sidenav-content>
 
-
-        
 
     </mat-sidenav-container>
 

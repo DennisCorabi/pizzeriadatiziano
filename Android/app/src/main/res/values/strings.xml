@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Pizzeria da Tiziano</string>
+    <string name="form_name">Name</string>
+    <string name="form_address">Address</string>
+    <string name="form_surname">Surname</string>
+    <string name="form_phone">Phone number</string>
+    <string name="form_order">Order here</string>
+    <string name="order_button">Order</string>
+    <string name="order_pizze_button">Choose pizzas</string>
+
+    <string name="pizze_item">Pizzas</string>
+    <string name="add_to_cart">Add to cart</string>
+
+    <string name="order_item">Order</string>
+
+</resources>

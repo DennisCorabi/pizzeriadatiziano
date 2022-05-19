@@ -36,3 +36,7 @@ mat-sidenav {
   left:0;
   bottom: 0;
 }
+
+.tracking_field{
+  width: 200px;
+}

@@ -27,38 +27,42 @@ import { SidenavcartComponent} from './sidenavcart/sidenavcart.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { OrderDialogComponent } from './order-dialog/order-dialog.component';
 import { StepperComponent } from './stepper/stepper.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     PizzacardsComponent,
-    SidenavcartComponent,    OrderDialogComponent, StepperComponent
+    SidenavcartComponent,    OrderDialogComponent, StepperComponent,
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MatGridListModule,
-    MatCardModule,
-    MatMenuModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatTabsModule,
-    MatDividerModule,
-    MatListModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatFormFieldModule,
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-    HttpClientModule,
-    MatSidenavModule,
-    MatExpansionModule
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MatGridListModule,
+        MatCardModule,
+        MatMenuModule,
+        MatIconModule,
+        MatButtonModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatTabsModule,
+        MatDividerModule,
+        MatSnackBarModule,
+        MatListModule,
+        MatCheckboxModule,
+        MatDialogModule,
+        MatStepperModule,
+        MatFormFieldModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        HttpClientModule,
+        MatSidenavModule,
+        MatExpansionModule,
+        MatSelectModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
