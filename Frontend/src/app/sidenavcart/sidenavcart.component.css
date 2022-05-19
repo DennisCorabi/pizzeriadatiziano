@@ -37,6 +37,13 @@ mat-sidenav {
   bottom: 0;
 }
 
+<<<<<<< HEAD
 .tracking_field{
   width: 200px;
 }
+=======
+.example-container {
+  position: relative;
+  height: 100%;
+}
+>>>>>>> 35a19773fcec9a869b876208f5455e9363945882
