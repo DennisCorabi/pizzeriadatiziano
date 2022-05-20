@@ -29,13 +29,14 @@ import { OrderDialogComponent } from './order-dialog/order-dialog.component';
 import { StepperComponent } from './stepper/stepper.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { TableComponent } from './table/table.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
     PizzacardsComponent,
-    SidenavcartComponent,    OrderDialogComponent, StepperComponent,
+    SidenavcartComponent,    OrderDialogComponent, StepperComponent, TableComponent,
   ],
     imports: [
         BrowserModule,

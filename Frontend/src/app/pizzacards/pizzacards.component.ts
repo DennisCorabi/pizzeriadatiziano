@@ -15,7 +15,7 @@ export class PizzacardsComponent implements OnInit {
 
 
   add(pizza: Pizza){
-    this._snackbar.open("La pizza "+pizza.name+" è stata aggiunta", "Chiudi", {
+    this._snackbar.open("La pizza "+pizza.name+" è stata aggiunta al carrello.", "Chiudi", {
       duration: 2000,
     });
     this.cart.add(pizza);

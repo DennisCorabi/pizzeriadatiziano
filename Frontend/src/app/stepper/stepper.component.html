@@ -5,11 +5,11 @@
         <ng-template matStepLabel>Inserisci le tue informazioni</ng-template>
         <mat-form-field class="field" appearance="fill">
           <mat-label>Nome</mat-label>
-          <input matInput placeholder="First name" formControlName="firstCtrl" required [(ngModel)]="cart.order.name" name="name">
+          <input matInput placeholder="Nome" formControlName="firstCtrl" required [(ngModel)]="cart.order.name" name="name">
         </mat-form-field>
         <mat-form-field class="field" appearance="fill">
             <mat-label>Cognome</mat-label>
-            <input matInput placeholder="Last name" formControlName="firstCtrl" required [(ngModel)]="cart.order.surname" name="surname">
+            <input matInput placeholder="Cognome" formControlName="firstCtrl" required [(ngModel)]="cart.order.surname" name="surname">
           </mat-form-field>
         <div>
           <button mat-button matStepperNext>Avanti</button>
@@ -21,15 +21,6 @@
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Inserisci il tuo indirizzo</ng-template>
 
-        <mat-form-field appearance="fill">
-          <mat-label>Seleziona la città</mat-label>
-          <mat-select formControlName="secondCtrl" required [(ngModel)]="cart.order.location.city">
-            <mat-option *ngFor="let city of cities" [value]="city">
-              {{city}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
         <mat-form-field appearance="fill" class="large_field">
           <mat-label>Indirizzo</mat-label>
           <input matInput formControlName="secondCtrl" required [(ngModel)] = "cart.order.location.address" name="address">
@@ -38,6 +29,11 @@
         <mat-form-field appearance="fill" class="small_field">
         <mat-label>Civico</mat-label>
         <input matInput formControlName="secondCtrl" required [(ngModel)] = "cart.order.location.nOfAddress" name="nOfAddress">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="large_field">
+        <mat-label>Città</mat-label>
+        <input matInput formControlName="secondCtrl" [(ngModel)] = "cart.order.location.city" required name="address">
       </mat-form-field>
 
         <div>
@@ -63,7 +59,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Telefono</mat-label>
-            <input matInput placeholder="393298527672" formControlName="thirdCtrl" required [(ngModel)] = "cart.order.phone.number" name="phone">
+            <input matInput placeholder="3298527672" formControlName="thirdCtrl" required [(ngModel)] = "cart.order.phone.number" name="phone">
           </mat-form-field>
           <div>
             <button mat-button matStepperPrevious>Indietro</button>

@@ -8,6 +8,11 @@ mat-icon{
   padding-left: 10px;
 }
 
+.title-toolbar {
+  position: absolute;
+  margin-left: 20px;
+}
+
 app-pizzacards {
     height: 100%;
 }
@@ -19,6 +24,7 @@ mat-sidenav {
 .title {
     margin-left: 50px;
     margin-top: 30px;
+    margin-bottom: 20px;
 }
 
 .sidenav-text {
