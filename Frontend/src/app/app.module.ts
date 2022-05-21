@@ -11,7 +11,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTabsModule} from '@angular/material/tabs';
-import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -30,6 +29,7 @@ import { StepperComponent } from './stepper/stepper.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { TableComponent } from './table/table.component';
+import {MatDividerModule} from '@angular/material/divider'; 
 
 @NgModule({
   declarations: [
@@ -62,7 +62,8 @@ import { TableComponent } from './table/table.component';
         HttpClientModule,
         MatSidenavModule,
         MatExpansionModule,
-        MatSelectModule
+        MatSelectModule,
+        MatDividerModule
     ],
   providers: [],
   bootstrap: [AppComponent]

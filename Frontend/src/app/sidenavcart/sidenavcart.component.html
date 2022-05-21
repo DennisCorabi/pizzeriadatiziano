@@ -13,14 +13,20 @@
       <mat-sidenav position="end" #sidenav mode="side">
         <h2 class="sidenav-text">Carrello</h2>
         <ul *ngIf="cart.order.price!=0">
-          <li *ngFor="let pizza of order">Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}</li>
+          
+          <li *ngFor="let pizza of order" class="list">
+            <mat-divider class="divider"></mat-divider>
+            Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}
+          </li>
+          <mat-divider></mat-divider>
         </ul>
-        <h4 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h4>
+        <span class="checkout">
+        <h5 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h5>
 
         <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="openDialog()">Invia ordine
           <mat-icon>shopping_cart_checkout</mat-icon>
         </button>
-
+      </span>
         </mat-sidenav>
 
         <mat-sidenav-content>
