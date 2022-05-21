@@ -3,7 +3,7 @@
     <img mat-card-image src="{{pizza.image}}" alt="Templates" class="card-image">
     <mat-card-content>
         <mat-card-title>{{pizza.name}}</mat-card-title>
-      <mat-card-subtitle>Pizza Classica: {{pizza.price.toString() | currency}}</mat-card-subtitle>
+      <mat-card-subtitle>Pizza Classica: {{pizza.price.toString() | currency:'EUR':true}}</mat-card-subtitle>
       <p>
         {{pizza.description}}
       </p>

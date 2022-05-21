@@ -16,12 +16,12 @@
           
           <li *ngFor="let pizza of order" class="list">
             <mat-divider class="divider"></mat-divider>
-            Pizza {{pizza.name}}: {{pizza.price.toString() | currency}}
+            Pizza {{pizza.name}}: {{pizza.price.toString() | currency:'EUR':true}}
           </li>
           <mat-divider></mat-divider>
         </ul>
         <span class="checkout">
-        <h5 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency }}</h5>
+        <h5 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency:'EUR':true }}</h5>
 
         <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="openDialog()">Invia ordine
           <mat-icon>shopping_cart_checkout</mat-icon>
