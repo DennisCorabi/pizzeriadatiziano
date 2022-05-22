@@ -8,6 +8,10 @@ import org.springframework.stereotype.Component;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+
+/*
+Classe con cui aggiungo degli URI legati alla richiesta http che sto compiendo
+ */
 @Component
 public class OrderBuilder {
 

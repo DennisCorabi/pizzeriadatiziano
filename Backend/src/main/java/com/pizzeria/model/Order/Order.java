@@ -7,10 +7,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document("ordini")
+/*
+Classe dell'ordine che verrà poi usata come modello per lo scambio di dati dal client al server e dal server al database
+ */
+
+@Document("ordini")         //indica il documento dove andranno poi archiviati gli ordini
 public class Order {
 
-    @Id
+    @Id             //ID univoco. Non necessita di nessuna dichiarazione dal momento che il suo valore verrà generato automaticamente.
     private String identifier;
 
     @JsonProperty("location")

@@ -1,9 +1,11 @@
 package com.pizzeria.model.Order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.springframework.boot.jackson.JsonComponent;
 
+
+/*
+Classe che rappresenta l'attributo "location" nella classe ordine. Contiene tutte le informazioni riguardo al luogo di consegna dell'ordine
+ */
 public class Location {
 
     @JsonProperty("city")
