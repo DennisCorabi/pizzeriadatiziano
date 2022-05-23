@@ -4,9 +4,8 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {OrderService} from "../order.service";
 import {cities} from "../Templates"
 import codes from "../../assets/CountryCodes.json";
-import UScities from "../../assets/US_States_and_Cities.json";
 import {OrderDialogComponent} from "../order-dialog/order-dialog.component";
-import {SidenavcartComponent} from "../sidenavcart/sidenavcart.component";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 @Component({

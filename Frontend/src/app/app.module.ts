@@ -17,7 +17,6 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormComponent } from './form/form.component';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
 import { PizzacardsComponent } from './pizzacards/pizzacards.component';
@@ -29,12 +28,12 @@ import { StepperComponent } from './stepper/stepper.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { TableComponent } from './table/table.component';
-import {MatDividerModule} from '@angular/material/divider'; 
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
     PizzacardsComponent,
     SidenavcartComponent,    OrderDialogComponent, StepperComponent, TableComponent,
   ],
@@ -68,4 +67,6 @@ import {MatDividerModule} from '@angular/material/divider';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

@@ -2,6 +2,7 @@
   position: absolute;
   right: 30px;
   background-color: #034f84;
+  border: 1px solid black;
 }
 
 mat-icon{
@@ -33,10 +34,6 @@ mat-sidenav {
     margin-bottom: 30px;
 }
 
-#send_button{
-  background-color: #034f84;
-  margin-left: 90px;
-}
 
 .tracking{
   position: fixed;
@@ -53,10 +50,16 @@ mat-sidenav {
 .list {
   margin-bottom: 35px;
   height: 30px;
-  width: -40px;
   list-style-type: none;
 }
 
 .divider {
   margin-bottom: 20px;
+}
+
+.submit-button{
+  background-color: #034f84;
+  border: 1px solid black;
+  color: #FAFAFA;
+  margin-left: 90px;
 }

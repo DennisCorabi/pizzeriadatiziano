@@ -1,6 +1,5 @@
-import {A} from "@angular/cdk/keycodes";
 
-export const pizze: Pizza[] = [
+export const pizze: Array<Pizza> = [
   {
     name:"Margherita",
     price:10,

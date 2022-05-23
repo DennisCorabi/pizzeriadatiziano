@@ -3,7 +3,7 @@ import {OrderService} from "../order.service";
 import {HttpClient} from "@angular/common/http";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {OrderDialogComponent} from "../order-dialog/order-dialog.component";
-import {Order} from "../Templates";
+import {Order, Pizza} from "../Templates";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -13,7 +13,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class SidenavcartComponent implements OnInit {
 
-  constructor(public cart: OrderService, private http:HttpClient, private dialog: MatDialog, private _snackBar: MatSnackBar) { }
+  constructor(public cart: OrderService, private http:HttpClient, private dialog: MatDialog, public _snackBar: MatSnackBar) { }
   order = this.cart.get();
   tracking_order = "";
 

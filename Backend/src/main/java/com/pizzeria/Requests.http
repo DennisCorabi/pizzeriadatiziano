@@ -1,4 +1,4 @@
-POST localhost:8080/api/v1/pizzeria
+POST pizzeriadatiziano.it:8080/api/v1/pizzeria
 Content-type: application/json
 
 {

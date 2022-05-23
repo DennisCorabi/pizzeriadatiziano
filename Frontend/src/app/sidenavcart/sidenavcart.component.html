@@ -2,7 +2,7 @@
     <mat-toolbar color="primary">
         <span class="title-toolbar">Pizzeria da Tiziano</span>
 
-      <button class="cart" mat-button (click)=sidenav.toggle()>CART
+      <button class="cart" mat-button (click)=sidenav.toggle()>Carrello
         <mat-icon>shopping_cart</mat-icon>
       </button>
 
@@ -13,17 +13,17 @@
       <mat-sidenav position="end" #sidenav mode="side">
         <h2 class="sidenav-text">Carrello</h2>
         <ul *ngIf="cart.order.price!=0">
-          
-          <li *ngFor="let pizza of order" class="list">
+          <li *ngFor="let pizza of cart.order.order" class="list">
             <mat-divider class="divider"></mat-divider>
-            Pizza {{pizza.name}}: {{pizza.price.toString() | currency:'EUR':true}}
+            Pizza {{pizza.name}}: {{pizza.price.toString() | currency:'EUR':"symbol"}}
           </li>
           <mat-divider></mat-divider>
         </ul>
-        <span class="checkout">
-        <h5 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency:'EUR':true }}</h5>
 
-        <button *ngIf="cart.order.price!=0" mat-button id="send_button" (click)="openDialog()">Invia ordine
+        <span class="checkout">
+        <h5 *ngIf="cart.order.price!=0" class="sidenav-text">Costo complessivo: {{this.cart.order.price.toString() | currency:'EUR':"symbol"}}</h5>
+
+        <button *ngIf="cart.order.price!=0" mat-button (click)="openDialog()" class="submit-button">Invia ordine
           <mat-icon>shopping_cart_checkout</mat-icon>
         </button>
       </span>
@@ -37,10 +37,25 @@
             <mat-expansion-panel-header>
               <mat-panel-title>Rintraccia il tuo ordine</mat-panel-title>
             </mat-expansion-panel-header>
+
+            <div *ngIf="cart.tracked_order">
+              <ol>
+                <li>Nome: {{cart.tracked_order.name | titlecase}}</li>
+                <li>Cognome: {{cart.tracked_order.surname}}</li>
+                <li>Indirizzo: {{cart.tracked_order.location.address}} {{cart.tracked_order.location.nOfAddress}}, {{cart.tracked_order.location.city}}</li>
+                <li>Numero di telefono: {{cart.tracked_order.phone.dial_code}} {{cart.tracked_order.phone.number}}</li>
+                <ul><strong>Pizze</strong>
+                  <li *ngFor="let pizza of cart.tracked_order.order">Pizza {{pizza.name}}</li>
+                </ul>
+              </ol>
+            </div>
+
             <mat-form-field class="tracking_field">
               <mat-label>Codice</mat-label>
               <input matInput [(ngModel)]="tracking_order" autocomplete="off" required>
             </mat-form-field>
+
+
             <button mat-button (click)="this.cart.track(tracking_order)">Rintraccia</button>
           </mat-expansion-panel>
         </mat-sidenav-content>
