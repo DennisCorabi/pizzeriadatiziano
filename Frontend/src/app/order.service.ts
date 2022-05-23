@@ -11,7 +11,7 @@ export class OrderService {
 
   order = new Order();
 
-  url: string = "http://85.234.131.162:8080/api/v1/pizzeria/";
+  url: string = "http://pizzeriadatiano.it:8080/api/v1/pizzeria/";
 
   constructor(private http:HttpClient, private _snackBar: MatSnackBar) { }
 
